@@ -11,16 +11,25 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                script {
+                    docker.image('maven:3.9.6-eclipse-temurin-17')
+                          .inside {
+                              sh 'mvn clean package'
+                          }
+                }
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test'
+                script {
+                    docker.image('maven:3.9.6-eclipse-temurin-17')
+                          .inside {
+                              sh 'mvn test'
+                          }
+                }
             }
         }
-
     }
 
     post {
