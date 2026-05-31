@@ -11,13 +11,23 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh './mvnw clean package'
+                script {
+                    docker.image('maven:3.9.6-eclipse-temurin-17')
+                          .inside {
+                              sh 'mvn clean package'
+                          }
+                }
             }
         }
 
         stage('Test') {
             steps {
-                sh './mvnw test'
+                script {
+                    docker.image('maven:3.9.6-eclipse-temurin-17')
+                          .inside {
+                              sh 'mvn test'
+                          }
+                }
             }
         }
     }
