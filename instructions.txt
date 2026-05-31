@@ -7,3 +7,13 @@ docker ps
 docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 http://localhost:8080
 Paste the password and Install Suggested Plugins
+
+
+
+Configure Git Repository
+Pipeline section:
+Pipeline Script from SCM
+SCM:Git
+Repository: https://github.com/krishnenduduttadc/SpringBoot-Jenkins.git
+Branch:main
+Script Path:Jenkinsfile
